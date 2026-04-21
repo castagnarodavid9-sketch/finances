@@ -58,9 +58,9 @@ object frmPrincipal: TfrmPrincipal
     Left = 16
     Top = 16
     object Movimentaes1: TMenuItem
-      Caption = 'Movimenta'#231#245'es - F1'
+      Caption = 'Movimenta'#231#245'es'
       object EntradaSada1: TMenuItem
-        Caption = 'Entrada / Sa'#237'da'
+        Caption = 'Entrada / Sa'#237'da - F2'
         OnClick = EntradaSada1Click
       end
     end

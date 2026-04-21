@@ -13,6 +13,7 @@ uses
 
 begin
   Application.Initialize;
+  Application.HelpFile := ''; // desativa help global
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmMovimentacoes, frmMovimentacoes);

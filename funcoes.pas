@@ -29,7 +29,7 @@ procedure AtalhosAcesso(var Key: Word; _AUnit: TFormClass);
 var
   AForm : TCustomForm; // Mesma coisa que o TForm, mas para funções genéricas
 begin
-  if Key = VK_F1 then begin
+  if Key = VK_F2 then begin
     AForm := _AUnit.Create(Application);
     Try
       AForm.ShowModal;

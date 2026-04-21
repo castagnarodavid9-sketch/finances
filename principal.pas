@@ -50,7 +50,7 @@ procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
   ConectarBanco;
   FDMovimentacoes.Connection := financesDB;
-  lblDepositos.Caption := 'Depósitos : R$' + FloatToStr(SelectSUMDepositos(FDMovimentacoes)) + ',00';
+  lblDepositos.Caption := 'Depósitos : R$' + FloatToStr(SelectSUMDepositosAndSaques(FDMovimentacoes, True)) + ',00';
 end;
 
 procedure TfrmPrincipal.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
