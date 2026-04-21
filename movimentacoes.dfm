@@ -2,7 +2,7 @@ object frmMovimentacoes: TfrmMovimentacoes
   Left = 0
   Top = 0
   Caption = 'Movimenta'#231#245'es'
-  ClientHeight = 205
+  ClientHeight = 239
   ClientWidth = 345
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -37,15 +37,15 @@ object frmMovimentacoes: TfrmMovimentacoes
     Caption = 'Dep'#243'sitos :'
   end
   object lblSaques: TLabel
-    Left = 120
-    Top = 176
+    Left = 8
+    Top = 197
     Width = 43
     Height = 15
     Caption = 'Saques :'
   end
   object lblCaixa: TLabel
-    Left = 227
-    Top = 176
+    Left = 8
+    Top = 216
     Width = 53
     Height = 15
     Caption = 'Em caixa :'

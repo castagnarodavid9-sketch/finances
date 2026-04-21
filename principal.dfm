@@ -41,7 +41,7 @@ object frmPrincipal: TfrmPrincipal
     Font.Style = []
     ParentFont = False
   end
-  object lblTotal: TLabel
+  object lblCaixa: TLabel
     Left = 440
     Top = 408
     Width = 49

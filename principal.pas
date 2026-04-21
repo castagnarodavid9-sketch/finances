@@ -20,7 +20,7 @@ type
     EntradaSada1: TMenuItem;
     lblDepositos: TLabel;
     lblSaques: TLabel;
-    lblTotal: TLabel;
+    lblCaixa: TLabel;
     DSMovimentacoes: TDataSource;
     FDMovimentacoes: TFDQuery;
     procedure EntradaSada1Click(Sender: TObject);
@@ -50,7 +50,9 @@ procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
   ConectarBanco;
   FDMovimentacoes.Connection := financesDB;
-  lblDepositos.Caption := 'Depósitos : R$' + FloatToStr(SelectSUMDepositosAndSaques(FDMovimentacoes, True)) + ',00';
+  lblDepositos.Caption := 'Depósitos : R$' + FloatToStr(SelectSUMDepositosAndSaques(FDMovimentacoes, True));
+  lblSaques.Caption := 'Saques : R$' + FloatToStr(SelectSUMDepositosAndSaques(FDMovimentacoes, False));
+  lblCaixa.Caption := 'Total : R$' + FloatToStr(SelectTotalDepositosAndSaques(FDMovimentacoes));
 end;
 
 procedure TfrmPrincipal.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);

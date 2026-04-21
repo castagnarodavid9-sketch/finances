@@ -65,8 +65,10 @@ begin
   ConectarBanco;
   FDMovimentacoes.Connection := conexao.financesDB;
   eDeposito.Checked := True;
-  lblDepositos.Caption := 'Depósitos : R$ ' + IfThen((SelectSUMDepositosAndSaques(FDMovimentacoes, True) > 0), FloatToStr(SelectSUMDepositosAndSaques(FDMovimentacoes, True)), '0') + ',00';
-  lblSaques.Caption := 'Saques : R$ ' + IfThen((SelectSUMDepositosAndSaques(FDMovimentacoes, False) > 0), FloatToStr(SelectSUMDepositosAndSaques(FDMovimentacoes, False)), '0') + ',00';
+  // Definição de valores iniciais
+  lblDepositos.Caption := 'Depósitos : R$ ' + IfThen((SelectSUMDepositosAndSaques(FDMovimentacoes, True) > 0), FloatToStr(SelectSUMDepositosAndSaques(FDMovimentacoes, True)), '0');
+  lblSaques.Caption := 'Saques : R$ ' + IfThen((SelectSUMDepositosAndSaques(FDMovimentacoes, False) > 0), FloatToStr(SelectSUMDepositosAndSaques(FDMovimentacoes, False)), '0');
+  lblCaixa.Caption := 'Total : R$ ' + FloatToStr(SelectTotalDepositosAndSaques(FDMovimentacoes));
 end;
 
 procedure TfrmMovimentacoes.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
