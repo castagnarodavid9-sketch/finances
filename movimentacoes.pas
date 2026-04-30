@@ -62,13 +62,12 @@ end;
 
 procedure TfrmMovimentacoes.FormCreate(Sender: TObject);
 begin
-  ConectarBanco;
-  FDMovimentacoes.Connection := conexao.financesDB;
+  TConexao.Conectar;
   eDeposito.Checked := True;
   // Definição de valores iniciais
-  lblDepositos.Caption := 'Depósitos : R$ ' + IfThen((SelectSUMDepositosAndSaques(FDMovimentacoes, True) > 0), FloatToStr(SelectSUMDepositosAndSaques(FDMovimentacoes, True)), '0');
-  lblSaques.Caption := 'Saques : R$ ' + IfThen((SelectSUMDepositosAndSaques(FDMovimentacoes, False) > 0), FloatToStr(SelectSUMDepositosAndSaques(FDMovimentacoes, False)), '0');
-  lblCaixa.Caption := 'Total : R$ ' + FloatToStr(SelectTotalDepositosAndSaques(FDMovimentacoes));
+  lblDepositos.Caption := 'Depósitos : R$ ' + IfThen((SelectSUMDepositosAndSaques(TConexao.GetConexao, True) > 0), FloatToStr(SelectSUMDepositosAndSaques(TConexao.GetConexao, True)), '0');
+  lblSaques.Caption := 'Saques : R$ ' + IfThen((SelectSUMDepositosAndSaques(TConexao.GetConexao, False) > 0), FloatToStr(SelectSUMDepositosAndSaques(TConexao.GetConexao, False)), '0');
+  lblCaixa.Caption := 'Total : R$ ' + FloatToStr(SelectTotalDepositosAndSaques(TConexao.GetConexao));
 end;
 
 procedure TfrmMovimentacoes.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);

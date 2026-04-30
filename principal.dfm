@@ -65,13 +65,4 @@ object frmPrincipal: TfrmPrincipal
       end
     end
   end
-  object DSMovimentacoes: TDataSource
-    DataSet = FDMovimentacoes
-    Left = 208
-    Top = 16
-  end
-  object FDMovimentacoes: TFDQuery
-    Left = 98
-    Top = 18
-  end
 end
