@@ -50,7 +50,7 @@ begin
     Operacao := 'Deposito'
   else
     Operacao := 'Saque';
-  if InsertTableMovimentacoes(FDMovimentacoes, eDescricao.Text, Operacao, StrToFloat(eValor.Text)) then
+  if InsertTableMovimentacoes(TConexao.GetConexao, eDescricao.Text, Operacao, StrToFloat(eValor.Text)) then
     Application.MessageBox('Movimentação salva com sucesso!', 'Aviso');
   LimparCampos(Self);
 end;

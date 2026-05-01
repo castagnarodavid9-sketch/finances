@@ -9,7 +9,7 @@ uses
   movimentacoes, funcoes, Vcl.StdCtrls, selectsDAO, conexao;
 
 type
-    TfrmPrincipal = class(TForm)
+  TfrmPrincipal = class(TForm)
     eMenu: TMainMenu;
     Movimentaes1: TMenuItem;
     EntradaSada1: TMenuItem;
@@ -20,9 +20,7 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
   private
-
   public
-
   end;
 
 var
@@ -34,9 +32,12 @@ implementation
 
 procedure TfrmPrincipal.EntradaSada1Click(Sender: TObject);
 begin
-
   frmMovimentacoes := TfrmMovimentacoes.Create(nil);
-  frmMovimentacoes.ShowModal;
+  try
+    frmMovimentacoes.ShowModal;
+  finally
+    frmMovimentacoes.Free;
+  end;
 end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);

@@ -5,25 +5,29 @@ interface
 uses
   Vcl.Forms, FireDAC.Comp.Client, System.SysUtils;
 
-function InsertTableMovimentacoes(_AQuery: TFDQuery; const ADescricao, AOperacao: string; AValor: Double): Boolean;
+function InsertTableMovimentacoes(_AConexao: TFDConnection; const ADescricao, AOperacao: string; AValor: Double): Boolean;
 
 implementation
 
-function InsertTableMovimentacoes(_AQuery: TFDQuery; const ADescricao, AOperacao: string; AValor: Double): Boolean;
+function InsertTableMovimentacoes(_AConexao: TFDConnection; const ADescricao, AOperacao: string; AValor: Double): Boolean;
+var
+  AQuery : TFDQuery;
 begin
   Result := False;
+  AQuery := TFDQuery.Create(nil);
   try
-    _AQuery.Close;
-    _AQuery.SQL.Text :=
+    AQuery.Connection := _AConexao;
+    AQuery.Close;
+    AQuery.SQL.Text :=
       'INSERT INTO movimentacoes ' +
       '(descricao, operacao, vlr_operacao, created_at, updated_at) ' +
       'VALUES (:descricao, :operacao, :vlr_operacao, :created_at, :updated_at)';
-    _AQuery.ParamByName('descricao').AsString := ADescricao;
-    _AQuery.ParamByName('operacao').AsString := AOperacao;
-    _AQuery.ParamByName('vlr_operacao').AsFloat := AValor;
-    _AQuery.ParamByName('created_at').AsDateTime := Now;
-    _AQuery.ParamByName('updated_at').AsDateTime := Now;
-    _AQuery.ExecSQL;
+    AQuery.ParamByName('descricao').AsString := ADescricao;
+    AQuery.ParamByName('operacao').AsString := AOperacao;
+    AQuery.ParamByName('vlr_operacao').AsFloat := AValor;
+    AQuery.ParamByName('created_at').AsDateTime := Now;
+    AQuery.ParamByName('updated_at').AsDateTime := Now;
+    AQuery.ExecSQL;
     Result := True;
   except
     Result := False;
