@@ -2,8 +2,8 @@ object frmMovimentacoes: TfrmMovimentacoes
   Left = 0
   Top = 0
   Caption = 'Movimenta'#231#245'es'
-  ClientHeight = 239
-  ClientWidth = 345
+  ClientHeight = 274
+  ClientWidth = 666
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,6 +13,7 @@ object frmMovimentacoes: TfrmMovimentacoes
   KeyPreview = True
   Position = poDesktopCenter
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   OnKeyDown = FormKeyDown
   TextHeight = 15
   object Label1: TLabel
@@ -23,32 +24,11 @@ object frmMovimentacoes: TfrmMovimentacoes
     Caption = 'Valor em R$ : '
   end
   object Label2: TLabel
-    Left = 21
-    Top = 39
+    Left = 343
+    Top = 10
     Width = 60
     Height = 15
     Caption = 'Descri'#231#227'o : '
-  end
-  object lblDepositos: TLabel
-    Left = 8
-    Top = 176
-    Width = 58
-    Height = 15
-    Caption = 'Dep'#243'sitos :'
-  end
-  object lblSaques: TLabel
-    Left = 8
-    Top = 197
-    Width = 43
-    Height = 15
-    Caption = 'Saques :'
-  end
-  object lblCaixa: TLabel
-    Left = 8
-    Top = 216
-    Width = 53
-    Height = 15
-    Caption = 'Em caixa :'
   end
   object eValor: TEdit
     Left = 84
@@ -57,61 +37,89 @@ object frmMovimentacoes: TfrmMovimentacoes
     Height = 23
     TabOrder = 0
   end
-  object eOperacaoGroup: TPanel
-    Left = 10
-    Top = 66
-    Width = 327
-    Height = 65
-    TabOrder = 2
-    object eDeposito: TRadioButton
-      Left = 68
-      Top = 24
-      Width = 73
-      Height = 17
-      Caption = 'Dep'#243'sito'
-      TabOrder = 0
-    end
-    object eSaque: TRadioButton
-      Left = 156
-      Top = 24
-      Width = 73
-      Height = 17
-      Caption = 'Saque'
-      TabOrder = 1
-    end
-  end
   object eDescricao: TEdit
-    Left = 84
-    Top = 37
+    Left = 406
+    Top = 8
     Width = 253
     Height = 23
     TabOrder = 1
   end
   object bExecutar: TButton
-    Left = 102
-    Top = 137
+    Left = 262
+    Top = 91
     Width = 75
     Height = 25
     Caption = 'Executar'
-    TabOrder = 3
+    TabOrder = 2
     OnClick = bExecutarClick
   end
   object bLimpar: TButton
-    Left = 183
-    Top = 138
+    Left = 343
+    Top = 92
     Width = 75
     Height = 25
     Caption = 'Limpar'
-    TabOrder = 4
+    TabOrder = 3
     OnClick = bLimparClick
   end
-  object FDMovimentacoes: TFDQuery
-    Left = 42
-    Top = 58
+  object DBGridMovimentacoes: TDBGrid
+    Left = 8
+    Top = 123
+    Width = 651
+    Height = 141
+    TabOrder = 4
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -12
+    TitleFont.Name = 'Segoe UI'
+    TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        Title.Alignment = taCenter
+        Title.Caption = 'C'#243'digo'
+        Width = 50
+        Visible = True
+      end
+      item
+        Expanded = False
+        Title.Alignment = taCenter
+        Title.Caption = 'Descri'#231#227'o'
+        Width = 400
+        Visible = True
+      end
+      item
+        Expanded = False
+        Title.Alignment = taCenter
+        Title.Caption = 'Valor'
+        Width = 75
+        Visible = True
+      end
+      item
+        Expanded = False
+        Title.Caption = 'Data'
+        Width = 107
+        Visible = True
+      end>
   end
-  object DSMovimentacoes: TDataSource
-    DataSet = FDMovimentacoes
-    Left = 136
-    Top = 56
+  object eOperacaoGroup: TRadioGroup
+    Left = 8
+    Top = 37
+    Width = 651
+    Height = 36
+    Caption = 'Opera'#231#227'o'
+    Columns = 2
+    Items.Strings = (
+      'Dep'#243'sito'
+      'Saque')
+    TabOrder = 5
+  end
+  object DataSourcemMovimentacoes: TDataSource
+    Left = 72
+    Top = 80
+  end
+  object FDQueryMovimentacoes: TFDQuery
+    Left = 200
+    Top = 80
   end
 end
